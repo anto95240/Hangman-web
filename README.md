@@ -1,7 +1,7 @@
 # HANGMAN-WEB
 
 Projet réalisé par : 
-    ABDERRAHIM Ines / LEGRAND Guillaume / MARIE Damien / RICHARD Antoine
+    > ABDERRAHIM Ines / LEGRAND Guillaume / MARIE Damien / RICHARD Antoine
 
 Utilisation : 
     
