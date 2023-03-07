@@ -7,5 +7,5 @@ Utilisation :
     
     ```git clone https://github.com/anto95240/Hangman-web.git 
     cd .\main\
-    go run main.go```
+    go run main.go
     
