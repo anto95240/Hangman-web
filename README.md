@@ -1,6 +1,6 @@
 # HANGMAN-WEB
 
-Projet réalisé par : 
+### Projet réalisé par : 
 
 ABDERRAHIM Ines / LEGRAND Guillaume / MARIE Damien / RICHARD Antoine
 
