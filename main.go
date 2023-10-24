@@ -144,10 +144,6 @@ func main() {
 		http.Redirect(w, r, "/play", http.StatusSeeOther)
 	})
 
-	// http.HandleFunc("/game", func(w http.ResponseWriter, r *http.Request) {
-	// 	http.ServeFile(w, r, "./pageshtml/game.html")
-	// })
-
 	// Serve asset files (CSS and JS)
 	http.Handle("/asset/", http.StripPrefix("/asset/", http.FileServer(http.Dir("asset"))))
 
