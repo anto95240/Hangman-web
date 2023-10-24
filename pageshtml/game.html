@@ -10,11 +10,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!--Lier le css-->
-    <link rel="stylesheet" href="static/style.css" />
+    <link rel="stylesheet" href="asset/css/game.css" />
 
     <!--Titre + image-->
     <title>Hangman</title>
-    <link rel="shortcut icon" href="/images/Eyes.gif">
+    <link rel="shortcut icon" href="asset/images/Eyes.gif">
 
 </head>
 
@@ -37,7 +37,7 @@
     <div class="main">
         <div class="menu">
             <h1 class="word">{{ .Word }}</h1>
-            <form action="/hangman2" method="post">
+            <form action="/game" method="post">
                 <div class="search">
                     <input required type="text" name ="field2" placeholder="Let's try . . ." required>
                 </div>
