@@ -34,26 +34,23 @@ type Score struct {
 	Points int
 }
 
-// Redirection vers la page cible lorsque jeu terminé.
-func Redirect(w http.ResponseWriter, r *http.Request) {
-
-	if boolean {
-		boolean = false
-		http.Redirect(w, r, "/game", http.StatusSeeOther)
-	} else {
-		new := Test{Att: attempt, Word: string(UdScore), Jose: piscine.Check(attempt), Rep: rep}
-		tmpl := template.Must(template.ParseFiles("./pageshtml/game.html"))
-		tmpl.Execute(w, new)
-	}
-}
-
 func main() {
 
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		http.ServeFile(w, r, "./pageshtml/index.html")
 	})
 
-	http.HandleFunc("/play", Redirect)
+	
+	http.HandleFunc("/play", func(w http.ResponseWriter, r *http.Request) {
+		if boolean {
+			boolean = false
+			http.Redirect(w, r, "/game", http.StatusSeeOther)
+		} else {
+			new := Test{Att: attempt, Word: string(UdScore), Jose: piscine.Check(attempt), Rep: rep}
+			tmpl := template.Must(template.ParseFiles("./pageshtml/game.html"))
+			tmpl.Execute(w, new)
+		}
+	})
 
 	http.HandleFunc("/win", func(w http.ResponseWriter, r *http.Request) {
 		boolean = true
