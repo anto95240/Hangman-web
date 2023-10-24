@@ -39,7 +39,7 @@ func Redirect(w http.ResponseWriter, r *http.Request) {
 
 	if boolean {
 		boolean = false
-		http.Redirect(w, r, "/home", http.StatusSeeOther)
+		http.Redirect(w, r, "/game", http.StatusSeeOther)
 	} else {
 		new := Test{Att: attempt, Word: string(UdScore), Jose: piscine.Check(attempt), Rep: rep}
 		tmpl := template.Must(template.ParseFiles("./pageshtml/game.html"))
@@ -48,11 +48,12 @@ func Redirect(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-	http.HandleFunc("/", Redirect)
 
-	http.HandleFunc("/home", func(w http.ResponseWriter, r *http.Request) {
+	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		http.ServeFile(w, r, "./pageshtml/index.html")
 	})
+
+	http.HandleFunc("/play", Redirect)
 
 	http.HandleFunc("/win", func(w http.ResponseWriter, r *http.Request) {
 		boolean = true
@@ -81,7 +82,7 @@ func main() {
 	//Redict for game.html
 	http.HandleFunc("/game", func(w http.ResponseWriter, r *http.Request) {
 		if err := r.ParseForm(); err != nil {
-			fmt.Fprintf(w, "ParseForm() err: %v", err)
+			http.Error(w, fmt.Sprintf("ParseForm() err: %v", err), http.StatusInternalServerError)
 			return
 		}
 
@@ -107,7 +108,7 @@ func main() {
 			boolean = true
 			http.Redirect(w, r, "/win", http.StatusSeeOther)
 		}
-		http.Redirect(w, r, "/", http.StatusSeeOther)
+		http.Redirect(w, r, "/play", http.StatusSeeOther)
 
 	})
 
@@ -143,7 +144,7 @@ func main() {
 			}
 		}
 
-		http.Redirect(w, r, "/", http.StatusSeeOther)
+		http.Redirect(w, r, "/play", http.StatusSeeOther)
 	})
 
 	// http.HandleFunc("/game", func(w http.ResponseWriter, r *http.Request) {
